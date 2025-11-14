@@ -1,18 +1,16 @@
-FROM agrigorev/zoomcamp-model:2025
+# docker build -t titanic-model . 
+# docker run -p 9696:9696 -it titanic-model
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
 
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+WORKDIR /app
 
-ENV PATH="/code/.venv/bin:$PATH"
+ENV PATH="/app/.venv/bin:$PATH"
 
-# * Install all the dependencies from pyproject.toml
-COPY "pyproject.toml" "uv.lock" ".python-version" ./
+COPY "pyproject.toml" "uv.lock" ".python-version" /app/
 RUN uv sync --locked
 
-# * Copy your FastAPI script
-COPY "predict.py" "pipeline_v1.bin" ./
+COPY "predict.py" "model.bin" ./
 
 EXPOSE 9696
 
-# * Run it with uvicorn 
-ENTRYPOINT ["uvicorn", "predict:app", "--host", "0.0.0.0", "--port", "9696"]
-
+ENTRYPOINT ["waitress-serve", "--host", "0.0.0.0", "--port", "9696", "predict:app"]
