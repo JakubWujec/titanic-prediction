@@ -10,18 +10,18 @@ model_file = "model.bin"
 with open(model_file, "rb") as f_in:
     dv, model = pickle.load(f_in)
 
-app = Flask("churn")
+app = Flask("survive")
 
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    customer = request.get_json()
+    passenger = request.get_json()
 
-    X = dv.transform([customer])
+    X = dv.transform([passenger])
     y_pred = model.predict_proba(X)[0, 1]
-    churn = y_pred >= 0.5
+    survive = y_pred >= 0.5
 
-    result = {"churn_probability": float(y_pred), "churn": bool(churn)}
+    result = {"survive_probability": float(y_pred), "survive": bool(survive)}
 
     return jsonify(result)
 
