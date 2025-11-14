@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+
+<body>
+    <main>
+        <h1>Titanic survival prediction</h1>
+        <form method="POST" action="/predict">
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" name="age" required>
+            </div>
+
+            <div>
+                <label for="pclass">Class:</label>
+                <select name="pclass" required>
+                    <option value="upper">Upper</option>
+                    <option value="middle">Middle</option>
+                    <option value="lower">Lower</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="sex">Sex:</label>
+                <select name="sex" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="solo">Traveling Solo:</label>
+                <input type="checkbox" name="solo" value="1" checked>
+            </div>
+
+            <button type="submit" class="contrast">Submit</button>
+        </form>
+
+        {% if survived is defined %}
+        <div>
+            {{survive_probability}}
+            <h2>Result:</h2>
+            <p>Survived: {{ survived }}</p>
+            <p>Survival probability {{p | round(2)}}</p>
+        </div>
+        {% endif %}
+    </main>
+</body>
+
+</html>
