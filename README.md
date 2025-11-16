@@ -1,9 +1,11 @@
-# Data
 
-## Data source
-https://www.kaggle.com/competitions/titanic/data?select=test.csv
+# Problem statement
+A model that predicts which passengers survived the Titanic shipwreck.
+[text](https://www.kaggle.com/competitions/titanic)
 
-## Data explained
+# Dataset description
+Data source: [text](https://www.kaggle.com/competitions/titanic/data?select=test.csv)
+
 Data Dictionary
 Variable	Definition	Key
 survival 	Survival 	0 = No, 1 = Yes
@@ -36,6 +38,23 @@ The dataset defines family relations in this way...
 Parent = mother, father
 Child = daughter, son, stepdaughter, stepson
 Some children travelled only with a nanny, therefore parch=0 for them.
+
+
+# Modeling approach & metrics
+
+# How to run locally and via Docker
+
+# API usage example
+
+# Known limitations / next steps
+
+
+
+# Data
+
+## Data source
+
+
 
 
 
