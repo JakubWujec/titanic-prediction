@@ -45,6 +45,18 @@ Some children travelled only with a nanny, therefore parch=0 for them.
 # How to run locally and via Docker
 
 # API usage example
+```bash
+curl -X POST http://localhost:9696/api/predict \
+     -H "Content-Type: application/json" \
+     -d '{"age": 27, "pclass": "middle", "sex": "male", "solo": 1}'
+```
+or on windows
+```bash
+curl -X POST http://localhost:9696/api/predict ^
+     -H "Content-Type: application/json" ^
+     -d "{\"age\": 27, \"pclass\": \"middle\", \"sex\": \"male\", \"solo\": 1}"
+```
+or use make_request.py file
 
 # Known limitations / next steps
 
