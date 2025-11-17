@@ -1,5 +1,23 @@
 # Data Preparation & EDA
 
+##  Dataset description
+Data source: [link](https://www.kaggle.com/competitions/titanic/data?select=test.csv)
+
+| Variable   | Definition                                  | Key                          |
+|------------|---------------------------------------------|------------------------------|
+| survival   | Survival                                    | 0 = No, 1 = Yes             |
+| pclass     | Ticket class                                | 1 = Upper, 2 = Middle, 3 = Lower  |
+| sex        | Sex                                         |                              |
+| Age        | Age in years                                |Age is fractional if less than 1. If the age is estimated, is it in the form of xx.5|
+| sibsp      | # of siblings / spouses aboard the Titanic  | brothers / sisters / stepbrothers / stepsisters / husbands / wives       |
+| parch      | # of parents / children aboard the Titanic  | mothers / fathers / daughters / sons / stepdaughters / stepsons    |
+| ticket     | Ticket number                               |                              |
+| fare       | Passenger fare                              |                              |
+| cabin      | Cabin number                                |                              |
+| embarked   | Port of Embarkation                        | C = Cherbourg, Q = Queenstown, S = Southampton |
+
+Some children travelled only with a nanny, therefore parch=0 for them.
+
 ## New features
 ```python
 df['child'] = (df['age'] < 13).astype(int)
