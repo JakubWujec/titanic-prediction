@@ -20,11 +20,9 @@ Some children travelled only with a nanny, therefore parch=0 for them.
 
 ## New features
 ```python
-df['child'] = (df['age'] < 13).astype(int)
 df['cabin_deck'] = df['cabin'].str[0]
 df['solo'] = ((df['sibsp'] == 0) & (df['parch'] == 0)).astype(int)
 ```
-+ child - binary variable (1 if age < 13 else 0)
 + solo - binary variabble (1 if person was travelling without children/spouse/sibling etc.)
 + cabin_deck - deck of the ship taken from first letter of cabin name
 
