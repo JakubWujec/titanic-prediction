@@ -35,6 +35,25 @@ After data cleaning and preparation size of dataset is 891 rows and 14 columns.
 Global survivorship calculated based on given dataset is around 38%.
 
 
+# Scoring 
+## ROC AUC score 
+is a metric for evaluating the performance of a classification model. It measures a model's ability to distinguish between two classes, with a score between 0 and 1. A perfect model has a score of 1, while a random model has a score of 0.5. The score represents the probability that the model will rank a randomly chosen positive instance higher than a randomly chosen negative instance.  
+
+    ROC AUC: stands for Receiver Operating Characteristic Area Under the Curve. 
+
+The ROC curve plots the true positive rate (TPR) against the false positive rate (FPR) at various threshold settings. 
+The AUC is the area under this curve. 
+
+
+## How to interpret the score
+
+    Perfect score (1.0): The model can perfectly separate the classes.
+    Random model score (0.5): The model is no better than random guessing.
+    Score below 0.5: The model is performing worse than random.
+    Higher score: Generally indicates better performance. 
+
+
+
 # Models
 
 | Model  | AUC Score                              |
