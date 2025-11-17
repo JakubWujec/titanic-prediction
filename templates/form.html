@@ -6,18 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Example</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <style>
+        body {
+            padding: 1rem;
+        }
+
+        main {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-group {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 0 1rem;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            input,
+            select {
+                width: 100%;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <main>
         <h1>Titanic survival prediction</h1>
         <form method="POST" action="/predict">
-            <div>
+            <div class="form-group">
                 <label for="age">Age:</label>
                 <input type="number" name="age" required>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="pclass">Class:</label>
                 <select name="pclass" required>
                     <option value="upper">Upper</option>
@@ -26,7 +59,7 @@
                 </select>
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="sex">Sex:</label>
                 <select name="sex" required>
                     <option value="male">Male</option>
@@ -34,12 +67,15 @@
                 </select>
             </div>
 
-            <div>
-                <label for="solo">Traveling Solo:</label>
+            <div class="form-group">
+                <label for="solo">Travelling Solo:</label>
                 <input type="checkbox" name="solo" value="1" checked>
             </div>
 
-            <button type="submit" class="contrast">Submit</button>
+            <div class="form-group">
+                <button type="submit" class="contrast">Submit</button>
+            </div>
+
         </form>
 
         {% if survived is defined %}

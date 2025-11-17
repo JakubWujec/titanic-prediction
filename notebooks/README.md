@@ -1,4 +1,4 @@
-# Data prep & EDA
+# Data Preparation & EDA
 
 ## New features
 ```python

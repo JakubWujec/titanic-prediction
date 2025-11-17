@@ -1,6 +1,6 @@
 import pickle
 
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, url_for
 from flask import request
 from flask import jsonify
 
@@ -38,9 +38,26 @@ def predict():
         passenger = {"age": age, "pclass": pclass, "sex": sex, "solo": solo}
 
         result = make_prediction(passenger)
-        return render_template("form.html", p=result["p"], survived=result["survived"])
+        return redirect(
+            url_for("show_result", p=result["p"], survived=result["survived"])
+        )
 
     return render_template("form.html")
+
+
+@app.route("/result")
+def show_result():
+    survived = request.args.get("survived", type=bool)
+    p = request.args.get("p", type=float)
+
+    if survived is None or p is None:
+        return redirect(
+            url_for(
+                "predict",
+            )
+        )
+
+    return render_template("result.html", p=p, survived=survived)
 
 
 @app.route("/ping", methods=["GET"])
