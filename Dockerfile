@@ -10,6 +10,7 @@ COPY "pyproject.toml" "uv.lock" ".python-version" /app/
 RUN uv sync --locked
 
 COPY "predict.py" "model.bin" ./
+COPY templates /app/templates
 
 EXPOSE 9696
 

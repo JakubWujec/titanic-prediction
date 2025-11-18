@@ -21,7 +21,8 @@ uv sync
 ```
 And then
 ```
-py predict.py
+uv run py train.py
+uv run py predict.py
 ```
 
 ## Via Docker
@@ -46,8 +47,16 @@ curl -X POST http://localhost:9696/api/predict ^
      -H "Content-Type: application/json" ^
      -d "{\"age\": 27, \"pclass\": \"middle\", \"sex\": \"male\", \"solo\": 1}"
 ```
-or use make_request.py file
 
+or open in your browser
+```bash
+http://localhost:9696
+```
+
+or use make_request.py file
+```bash
+uv run py make_request.py
+```
 
 
 
