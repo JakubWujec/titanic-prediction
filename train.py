@@ -37,25 +37,22 @@ y_val = df_test["survived"].values
 del df_train["survived"]
 del df_test["survived"]
 
+
 # training
-
-
-def train(df_train, y_train, C=1.0):
-    dicts = df_train[categorical_features + numerical_features].to_dict(
-        orient="records"
-    )
+def train(df_train, y_train, features, **model_params):
+    dicts = df_train[features].to_dict(orient="records")
 
     dv = DictVectorizer(sparse=False)
     X_train = dv.fit_transform(dicts)
 
-    model = LogisticRegression(C=C, max_iter=1000)
+    model = LogisticRegression(**model_params)
     model.fit(X_train, y_train)
 
     return dv, model
 
 
-def predict(df, dv, model):
-    dicts = df[categorical_features + numerical_features].to_dict(orient="records")
+def predict(df, dv, model, features):
+    dicts = df[features].to_dict(orient="records")
 
     X = dv.transform(dicts)
     y_pred = model.predict_proba(X)[:, 1]
@@ -63,51 +60,10 @@ def predict(df, dv, model):
     return y_pred
 
 
-dv, model = train(df_train, y_train)
-
-
-# validation
-
-# print(f"doing validation with C={C}")
-
-# kfold = KFold(n_splits=n_splits, shuffle=True, random_state=1)
-
-# scores = []
-
-# fold = 0
-
-# for train_idx, val_idx in kfold.split(df_train):
-#     df_train = df_train.iloc[train_idx]
-#     df_val = df_train.iloc[val_idx]
-
-#     y_train = df_train.survived.values
-#     y_val = df_val.survived.values
-
-#     dv, model = train(df_train, y_train, C=C)
-#     y_pred = predict(df_test, dv, model)
-
-#     auc = roc_auc_score(y_val, y_pred)
-#     scores.append(auc)
-
-#     print(f"auc on fold {fold} is {auc}")
-#     fold = fold + 1
-
-
-# print("validation results:")
-# print("C=%s %.3f +- %.3f" % (C, np.mean(scores), np.std(scores)))
-
-
-# # training the final model
-
-# print("training the final model")
-
-# dv, model = train(df_train, df_train.survived.values, C=1.0)
-# y_pred = predict(df_test, dv, model)
-
-# y_test = df_test.survived.values
-# auc = roc_auc_score(y_test, y_pred)
-
-# print(f"auc={auc}")
+model_params = {"C": 1.0}
+dv, model = train(
+    df_train, y_train, numerical_features + categorical_features, **model_params
+)
 
 
 # Save the model
