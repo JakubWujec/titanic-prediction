@@ -34,7 +34,7 @@ def predict():
         age = request.form["age"]
         pclass = request.form["pclass"]
         sex = request.form["sex"]
-        solo = request.form["solo"]
+        solo = getattr(request.form, "solo", 0)
         passenger = {"age": age, "pclass": pclass, "sex": sex, "solo": solo}
 
         result = make_prediction(passenger)
@@ -53,7 +53,7 @@ def show_result():
     if survived is None or p is None:
         return redirect(
             url_for(
-                "/",
+                "predict",
             )
         )
 
