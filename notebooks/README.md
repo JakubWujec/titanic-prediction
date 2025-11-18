@@ -59,6 +59,6 @@ The AUC is the area under this curve.
 | Model  | AUC Score                              |
 |------------|---------------------------------------------|
 | Logistic Regression   | 0.839                                  | 
-| DecisionTreeClassifier    | 0.845                             | 
+| DecisionTreeClassifier    | 0.882                             | 
 | RandomForestClassifier    | 0.836                           | 
-| XGB    | 0.850                             | 
+| XGB    | 0.828                         | 
