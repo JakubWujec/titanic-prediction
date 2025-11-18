@@ -33,7 +33,6 @@
     <main>
         <h1>Prediction Result</h1>
         <h2>Result:</h2>
-        <p>Survived: {{ survived }}</p>
         <p>Survival Probability: {{ p | round(2) }}</p>
         <a href="{{ url_for('predict') }}">Make another prediction</a>
     </main>

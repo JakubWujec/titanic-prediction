@@ -56,7 +56,7 @@ if __name__ == "__main__":
     del df_test["survived"]
 
     features = numerical_features + categorical_features
-    model_params = {"max_depth": 5, "min_samples_leaf": 1}
+    model_params = {"max_depth": 5, "min_samples_leaf": 6}
     dv, model = train(df_train, y_train, features, **model_params)
 
     y_pred = predict(

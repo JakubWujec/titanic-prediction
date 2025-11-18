@@ -28,7 +28,7 @@ def api_predict():
     return jsonify(result)
 
 
-@app.route("/predict", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def predict():
     if request.method == "POST":
         age = request.form["age"]
@@ -53,7 +53,7 @@ def show_result():
     if survived is None or p is None:
         return redirect(
             url_for(
-                "predict",
+                "/",
             )
         )
 
